@@ -20,7 +20,7 @@ analyzing their underlying dynamics and structural constraints.
 
 ---
 
-# Current Research Problems
+# Current Research Direction
 
 ## **Proposal 1 — Identity-Preserving Diffusion Dynamics**
 Identity features often drift in one-shot personalization.  
