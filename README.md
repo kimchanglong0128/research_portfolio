@@ -1,4 +1,4 @@
-# Changlong Jin — Generative Modeling & Multimodal Learning
+# Changlong Jin — Department of AI
 
 Hi, I'm **Changlong Jin**, a Master–Ph.D. student at **Yonsei University**.  
 My research focuses on **inductive biases in generative models**, I aim to build a model with 'intelligence' that can understand human language and can self-improving.
