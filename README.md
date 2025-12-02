@@ -59,7 +59,7 @@ I performed comprehensive review and theoretical study of prior work related to 
 - 🔗 modality fusion
 
 ## Research Readmap
-
+[images/RoadMap.png]
 
 # **📫 Contant**
 - Email: kimcl1221@yonsei.ac.kr
