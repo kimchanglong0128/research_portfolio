@@ -15,9 +15,10 @@ Currently researching:
 - **Inductive Biases in Generative Models**
 - **Identity-Stable Diffusion SDE/ODE Dynamics**
 - **Closed-Loop T2I ↔ I2T Multimodal Alignment**
-- **Parameter-Efficient Adaptation (LoRA, Adapters)**
-- **Continuous/Lifelong Learning for Generative Models**
+- **Parameter-Efficient Adaptation**
+- **Continuous Learning for Generative Models**
 - **Multimodal Fusion (Image × Text)**
+- **Enhance the model’s text understanding capability**
 
 ---
 
