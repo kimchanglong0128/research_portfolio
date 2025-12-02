@@ -14,4 +14,3 @@ The main goal is to:
 - `lora/` — LoRA-based identity preservation experiments  
 - `adapters/` — Alternative adapter-based methods
 - `baselines/` — Vanilla fine-tuning / textual inversion, etc.  
-- `analysis/` — Notebooks and scripts for visualizing drift, SDE vs ODE
