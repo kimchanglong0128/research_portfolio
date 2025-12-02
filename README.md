@@ -1,4 +1,4 @@
-# Changlong Jin — Department of AI
+# Changlong Jin — AI Dept.
 
 Hi, I'm **Changlong Jin**, a Master–Ph.D. student at **Yonsei University**.  
 My research focuses on **inductive biases in generative models**, I aim to build a model with 'intelligence' that can understand human language and can self-improving.
@@ -17,7 +17,7 @@ Currently researching:
 - **Closed-Loop T2I ↔ I2T Multimodal Alignment**
 - **Parameter-Efficient Adaptation (LoRA, Adapters)**
 - **Continuous/Lifelong Learning for Generative Models**
-- **Multimodal Fusion (Audio × Image × Text)**
+- **Multimodal Fusion (Image × Text)**
 
 ---
 
@@ -44,4 +44,12 @@ I propose a **T2I ↔ I2T cycle** with:
 - replay + adapter-based continuous refinement  
 
 **Goal:** A self-improving multimodal generative system.
+
+# Preliminary Work
+## **Research Preparation**
+I performed comprehensive review and theoretical study of prior work related to Diffusion Dynamics, Multimodal Alignment, and Recommendation System.
+
+[Generative & Diffusion Model Study Notes (Notion)](https://www.notion.so/Generative-Diffusion-Model-2a4d80fa6bde801fa55bf3e4cdde2e05)
+
+[Representation Learning & Recommender System Notes (Notion)](https://www.notion.so/1ccd80fa6bde804fbf91cf15ec433298?v=1ccd80fa6bde80b18a97000c46532dd4)
 
