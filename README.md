@@ -4,9 +4,9 @@ Hi, I'm **CHANGLONG JIN**, Integrated Master–Ph.D. program at **Yonsei Univers
 I aim to develop generative models with stronger inductive biases—models that can understand human language and continuously self-improve.
 
 Currently researching:
-- diffusion-based identity consistency, 
-- multimodal alignment
-- parameter-efficient adaptation.
+- diffusion-based identity consistency  
+- multimodal alignment  
+- parameter-efficient adaptation  
 
 ---
 
@@ -45,22 +45,31 @@ I propose a **T2I ↔ I2T cycle** with:
 
 **Goal:** A self-improving multimodal generative system.
 
+---
+
 # 🧭 Preliminary Work
+
 ## **📚 Research Preparation**
-I performed comprehensive review and theoretical study of prior work related to [Generative & Diffusion Model](https://www.notion.so/Generative-Diffusion-Model-2a4d80fa6bde801fa55bf3e4cdde2e05),  [Multimodal Alignment, Representation Learning & Recommendation System](https://www.notion.so/1ccd80fa6bde804fbf91cf15ec433298?v=1ccd80fa6bde80b18a97000c46532dd4).
+I performed comprehensive review and theoretical study of prior work related to  
+[Generative & Diffusion Model](https://www.notion.so/Generative-Diffusion-Model-2a4d80fa6bde801fa55bf3e4cdde2e05),  
+[Multimodal Alignment, Representation Learning & Recommendation System](https://www.notion.so/1ccd80fa6bde804fbf91cf15ec433298?v=1ccd80fa6bde80b18a97000c46532dd4).
 
-
+---
 
 ## **🧪 Research Projects & Experiments**
 
-- 🔗 Diffusion storytelling with identity conditioning
-- 🔗 LoRA-based diffusion adaptation
-- 🔗 Cycle-consistency experiments
-- 🔗 modality fusion
+- 🎨 Diffusion storytelling with identity conditioning  
+- 🧩 LoRA-based diffusion adaptation  
+- 🔁 Cycle-consistency experiments  
+- 🔀 Multimodal fusion  
 
-## Research Readmap
+---
+
+## **Research Roadmap**
 ![Roadmap](images/RoadMap.png)
 
-# **📫 Contant**
-- Email: kimcl1221@yonsei.ac.kr
+---
+
+# 📫 Contact
+- Email: kimcl1221@yonsei.ac.kr  
 - GitHub: github.com/kimchanglong0128
