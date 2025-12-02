@@ -1,4 +1,4 @@
-# 🏫 Changlong Jin, Integrated Master–Ph.D. Researcher
+# 🏫 CHANGLONG JIN, Integrated Master–Ph.D. Researcher
 
 Hi, I'm **CHANGLONG JIN**, Integrated Master–Ph.D. program at **Yonsei University AI Dept.**.  
 I aim to develop generative models with stronger inductive biases—models that can understand human language and continuously self-improve.
