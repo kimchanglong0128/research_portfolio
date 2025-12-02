@@ -1,7 +1,7 @@
 # 🏫 Changlong Jin — AI Dept.
 
-Hi, I'm **Changlong Jin**, a Master–Ph.D. student at **Yonsei University**.  
-My research focuses on **inductive biases in generative models**, I aim to build a model with 'intelligence' that can understand human language and can self-improving.
+Hi, I'm **Changlong Jin**, Integrated Master–Ph.D. program at **Yonsei University**.  
+I aim to develop generative models with stronger inductive biases—models that can understand human language and continuously self-improve.
 
 Currently researching:
 - diffusion-based identity consistency, 
@@ -47,7 +47,7 @@ I propose a **T2I ↔ I2T cycle** with:
 
 # 🧭 Preliminary Work
 ## **📚 Research Preparation**
-I performed comprehensive review and theoretical study of prior work related to Diffusion Dynamics, Multimodal Alignment, and Recommendation System.
+I performed comprehensive review and theoretical study of prior work related to Diffusion Dynamics, Multimodal Alignment, and Representation Learning.
 
 [Generative & Diffusion Model Study Notes](https://www.notion.so/Generative-Diffusion-Model-2a4d80fa6bde801fa55bf3e4cdde2e05)
 
@@ -59,3 +59,10 @@ I performed comprehensive review and theoretical study of prior work related to 
 - 🔗 LoRA-based diffusion adaptation
 - 🔗 Cycle-consistency experiments
 - 🔗 modality fusion
+
+## Research Readmap
+
+
+# **📫 Contant**
+- Email: kimcl1221@yonsei.ac.kr
+- GitHub: github.com/kimchanglong0128
