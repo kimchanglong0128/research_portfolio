@@ -47,9 +47,9 @@ I propose a **T2I ↔ I2T cycle** with:
 
 # 🧭 Preliminary Work
 ## **📚 Research Preparation**
-I performed comprehensive review and theoretical study of prior work related to [Generative & Diffusion Model](https://www.notion.so/Generative-Diffusion-Model-2a4d80fa6bde801fa55bf3e4cdde2e05), Multimodal Alignment, and Representation Learning.
+I performed comprehensive review and theoretical study of prior work related to [Generative & Diffusion Model](https://www.notion.so/Generative-Diffusion-Model-2a4d80fa6bde801fa55bf3e4cdde2e05),  [Multimodal Alignment, Representation Learning & Recommendation System](https://www.notion.so/1ccd80fa6bde804fbf91cf15ec433298?v=1ccd80fa6bde80b18a97000c46532dd4).
 
-[Representation Learning](https://www.notion.so/1ccd80fa6bde804fbf91cf15ec433298?v=1ccd80fa6bde80b18a97000c46532dd4)
+
 
 ## **🧪 Research Projects & Experiments**
 
