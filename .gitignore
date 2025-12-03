@@ -1,0 +1,6 @@
+diffusion_demo/utils/data
+diffusion_demo/results
+venv/
+wandb/
+*.pth
+*.tar.gz
