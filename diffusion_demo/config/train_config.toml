@@ -1,0 +1,49 @@
+[experiment]
+name = 'cifar_clip_exp1'
+save_dir = './diffusion_demo/result/checkpoints_cifar_clip'
+seed = 42 
+
+[model]
+in_channels = 3 
+base_channels = 64
+time_embedding_dim = 256
+cond_dim = 512
+num_heads = 4
+
+
+[diffusion]
+timesteps = 1000
+beta_start = 1e-4
+beta_end = 2e-2
+
+[training]
+epochs = 300
+batch_size = 64
+learning_rate = 1e-4
+
+data_root = './diffusion_demo/utils/data'
+num_workers = 2
+
+log_every = 100 
+save_every = 1
+
+prefer_cpu = true
+prefer_mps = true 
+prefer_gpu = true 
+
+[clip]
+model_name = 'ViT-B-32'
+pretrained = 'openai'
+normalize = true
+
+[wandb]
+enabled = true 
+every_epoch = 1
+num_samples = 8
+steps = 100 
+
+[sampling]
+enabled = true
+sample_every_epoch = 1
+num_samples = 8
+steps = 100

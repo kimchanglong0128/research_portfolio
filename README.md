@@ -1,0 +1,74 @@
+# 🏫 CHANGLONG JIN, Integrated Master–Ph.D. Researcher
+
+Hi, I'm **CHANGLONG JIN**, Integrated Master–Ph.D. program at **Yonsei University AI Dept.**  
+I aim to develop generative models with stronger inductive biases—models that can understand human language and continuously self-improve.
+
+Currently researching:
+- diffusion-based identity consistency  
+- multimodal alignment  
+- parameter-efficient adaptation  
+
+---
+
+# 🎯 Research Focus
+
+- **Inductive Biases in Generative Models**
+- **Identity-Stable Diffusion SDE/ODE Dynamics**
+- **Closed-Loop T2I ↔ I2T Multimodal Alignment**
+- **Parameter-Efficient Adaptation**
+- **Continuous Learning for Generative Models**
+- **Multimodal Fusion (Image × Text)**
+- **Enhance the model’s text understanding capability**
+
+---
+
+# 🔬 Current Research Direction
+
+## **Proposal 1 — Identity-Preserving Diffusion Dynamics**
+Identity features often drift in one-shot personalization.  
+I study how identity information propagates through **diffusion SDE/ODE fields**, and design:
+
+- low-rank/adaptive structure as identity-preserving inductive biases  
+- identity-stable probability-flow ODE  
+- dynamics-based controls for identity consistency under minimal samples  
+
+**Goal:** A theoretically grounded, identity-stable personalization mechanism.
+
+---
+
+## **Proposal 2 — Closed-Loop Multimodal Alignment**
+Current T2I models lack self-correction.  
+I propose a **T2I ↔ I2T cycle** with:
+
+- CLIP-based alignment rewards  
+- cycle consistency to reduce semantic drift  
+- replay + adapter-based continuous refinement  
+
+**Goal:** A self-improving multimodal generative system.
+
+---
+
+# 🧭 Preliminary Work
+
+## **📚 Research Preparation**
+I performed comprehensive review and theoretical study of prior work related to [Generative & Diffusion Model](https://www.notion.so/Generative-Diffusion-Model-2a4d80fa6bde801fa55bf3e4cdde2e05), [Multimodal Alignment, Representation Learning & Recommendation System](https://www.notion.so/1ccd80fa6bde804fbf91cf15ec433298?v=1ccd80fa6bde80b18a97000c46532dd4).
+
+---
+
+## **🧪 Research Projects & Experiments**
+
+- 🎨 Diffusion storytelling with identity conditioning  
+- 🧩 LoRA-based diffusion adaptation  
+- 🔁 Cycle-consistency experiments  
+- 🔀 Multimodal fusion  
+
+---
+
+## **Research Roadmap**
+![Roadmap](images/RoadMap.png)
+
+---
+
+# 📫 Contact
+- Email: kimcl1221@yonsei.ac.kr  
+- GitHub: github.com/kimchanglong0128
