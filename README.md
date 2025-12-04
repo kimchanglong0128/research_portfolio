@@ -57,7 +57,6 @@ I performed comprehensive review and theoretical study of prior work related to 
 
 ## **🧪 Research Projects & Experiments**
 
-- 🎨 Diffusion storytelling with identity conditioning  
 - 🧩 LoRA-based diffusion adaptation  
 - 🔁 Cycle-consistency experiments  
 - 🔀 Multimodal fusion  
