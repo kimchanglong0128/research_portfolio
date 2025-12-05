@@ -40,141 +40,147 @@ This agenda contains **two complementary research directions** that together aim
 One-shot personalization frequently suffers from *identity drift*, where the generated subject gradually deviates from the reference.  
 This issue persists across architectures—including U-Net, SDXL, and DiT—suggesting that identity loss originates from **diffusion dynamics**, not model capacity.
 
-My research investigates *how identity information propagates through the diffusion SDE/ODE process* and how to stabilize it.
+My research investigates how identity information propagates through the diffusion SDE/ODE process and how to stabilize it.
 
 ---
 
-## **1. Identity Flow Analysis Through Diffusion Timesteps**
+## 1. Identity Flow Analysis Through Diffusion Timesteps
 
-I decode intermediate diffusion states (latents \(x_t\)) and compute identity embeddings using CLIP/DINO:
+I decode intermediate diffusion states (latents `x_t`) and compute identity embeddings using CLIP/DINO, then track an identity similarity curve, e.g.:
 
-- visualize identity similarity curves across timesteps  
+- `s_t = cos(z_t, z_ref)` where `z_t` is the embedding at timestep `t`  
+- visualize how similarity changes across timesteps  
 - identify critical intervals where identity degradation emerges  
-- compare DDPM / DDIM / Flow-Matching behaviors  
+- compare DDPM / DDIM / flow-matching style samplers  
 - analyze how noise schedule and timestep parameterization affect identity sensitivity  
 
-This produces the first systematic **identity evolution profile** for diffusion models.
+This produces a systematic **identity evolution profile** for diffusion models.
 
 ---
 
-## **2. Effects of Low-Rank Personalization on Identity Stability**
+## 2. Effects of Low-Rank Personalization on Identity Stability
 
-Low-rank adaptation (LoRA) modifies the score function:
+Low-rank adaptation (LoRA) modifies the score function and internal representations.  
+I study questions such as:
 
-- Which layers help identity retention?  
-- Which layers induce drift?  
-- Does rank or scale correlate with stability?  
-- Do LoRA update directions align with identity-preserving subspaces?  
+- Which layers help identity retention, and which tend to induce drift?  
+- How do rank, scale, and insertion location affect identity stability?  
+- Do LoRA update directions align with identity-preserving or identity-destroying subspaces in the feature space?  
 
-Using gradient projections and embedding-space perturbation analysis, I study the **structure–identity relationship** inside diffusion models.
+Using gradient analysis and embedding-space perturbation, I aim to reveal the **structure–identity relationship** inside diffusion models.
 
 ---
 
-## **3. Designing Identity-Stable Diffusion Dynamics**
+## 3. Designing Identity-Stable Diffusion Dynamics
 
 The goal is to build diffusion mechanisms that *naturally* preserve identity:
 
 - identity-corrective vector fields added to the probability-flow ODE  
 - projection onto identity-consistent subspaces of the score field  
 - sampling-time regularization to stabilize sensitive regions  
-- architecture-agnostic controls applicable to U-Net, SDXL, DiT  
+- architecture-agnostic controls applicable to U-Net, SDXL, and DiT variants  
 
 **Goal:**  
 A theoretically grounded framework for *identity-stable personalization*, even in one-shot settings.
+
 
 ---
 
 # 🔶 Part II — Closed-Loop Multimodal Alignment
 
-Despite high generative quality, diffusion models often fail to maintain strong semantic fidelity.  
+Despite high visual quality, diffusion-based text-to-image models often fail to maintain semantic fidelity.  
 They lack mechanisms to **evaluate, diagnose, and refine** their own outputs.
 
 I aim to build a closed-loop T2I ↔ I2T refinement system where models learn to self-correct using multimodal feedback.
 
 ---
 
-## **1. Multimodal Feedback Modeling**
+## 1. Multimodal Feedback Modeling
 
-I design a unified reward integrating three semantic signals:
+I design a unified reward integrating multiple semantic signals:
 
-- **CLIP similarity** (global alignment)  
-- **caption-based similarity** (fine-grained semantics)  
-- **perceptual consistency** (image-level stability)  
+- **CLIP similarity** between text and image (global alignment)  
+- **caption-based similarity** using an image-to-text model (`ŷ = I2T(x)`) and a text encoder `E(·)`  
+- optionally, **perceptual or feature-level consistency** for stability  
 
-\[
-R(x, y) = 
-\alpha \cdot \mathrm{CLIP}(x,y)
-+ \beta \cdot \cos(E(\hat{y}), E(y))
-+ \gamma \cdot \mathrm{Perceptual}(x)
-\]
+A conceptual reward could be written as:
 
-This creates a richer supervisory signal than CLIP alone.
+- `R(x, y) = α * CLIP(x, y) + β * cos(E(ŷ), E(y)) + γ * Perceptual(x)`
+
+This creates a richer supervisory signal than CLIP alone and can be used to rank, filter, or refine generations.
 
 ---
 
-## **2. Closed-Loop Generation and Refinement**
+## 2. Closed-Loop Generation and Refinement
 
-Instead of full RL-based training (high cost), I explore lightweight iterative refinement:
+Instead of full RL training, I explore lightweight iterative refinement driven by differentiable feedback.  
+Given a current image `x_t`:
 
-\[
-x_{t+1} = x_t + \eta \nabla_x R(x_t, y)
-\]
+- refine in image/latent space using a step like  
+  `x_{t+1} = x_t + η * ∇_x R(x_t, y)`  
+- or refine the generator parameters with small adapter / LoRA updates guided by `∇_θ R(G_θ(y), y)`  
 
-This mechanism enables:
+This enables:
 
 - correction of local attribute mismatches  
 - reinforcement of global semantics  
-- prevention of drift during long or compositional prompts  
+- prevention of drift on long or compositional prompts  
 
-It forms a **self-improving loop** without expensive retraining.
+It forms a **self-improving loop** without expensive full-model retraining.  
+Reinforcement learning is optional for non-differentiable objectives, but **not required** for the core closed-loop framework.
 
 ---
 
-## **3. Representation-Consistent Alignment**
+## 3. Representation-Consistent Alignment
 
-I enforce coherence across T2I and I2T embedding spaces:
+Current T2I and I2T systems are often trained separately.  
+I aim to enforce **cross-modal consistency** between image and text embeddings:
 
-\[
-\mathcal{L}_{repr} =
-\|E_{\mathrm{img}}(x) - E_{\mathrm{text}}(y)\|
-+ \lambda \|E(\hat{y}) - E(y)\|.
-\]
+- encourage `E_img(x)` and `E_text(y)` to be close for aligned pairs  
+- encourage `E_text(ŷ)` to be close to `E_text(y)` when `ŷ = I2T(x)`  
+
+A conceptual loss:
+
+- `L_repr = ||E_img(x) - E_text(y)|| + λ * ||E_text(ŷ) - E_text(y)||`
 
 This improves:
 
 - compositional reasoning  
-- long-tail robustness  
+- robustness on long-tail prompts  
 - fine-grained attribute consistency  
-- cross-modal semantic grounding  
+- semantic grounding across T2I and I2T paths  
 
 **Goal:**  
-A T2I model that understands—and corrects—its own mistakes.
+A T2I model that can understand its own mistakes, and iteratively correct them through multimodal feedback.
 
 ---
 
 # 🧭 Preliminary Work
 
-### 📚 Theoretical Preparation
-Extensive study on:
-- generative & diffusion model theory  
-- multimodal alignment and representation learning  
-- parameter-efficient tuning  
-- diffusion trajectory interpretation  
+## 📚 Theoretical Preparation
 
-(Notes maintained in private logs.)
+I conducted in-depth reviews and theoretical studies on:
+
+- [Generative & Diffusion Models](https://www.notion.so/Generative-Diffusion-Model-2a4d80fa6bde801fa55bf3e4cdde2e05)  
+- [Multimodal Alignment, Representation Learning & Recommendation Systems](https://www.notion.so/1ccd80fa6bde804fbf91cf15ec433298?v=1ccd80fa6bde80b18a97000c46532dd4)  
+- Parameter-efficient adaptation methods (LoRA, adapters)  
+
+(Additional research notes are documented in personal logs.)
 
 ---
 
-### 🧪 Experiments & Prototyping
-- LoRA-based personalization experiments  
-- multimodal fusion prototypes  
-- closed-loop caption feedback tests  
-- identity drift visualization tools  
-- diffusion-step identity curve analysis  
+## 🧪 Experiments & Prototyping
+
+- LoRA-based diffusion personalization experiments  
+- Multimodal fusion prototypes (vision × text encoders)  
+- Closed-loop caption feedback tests  
+- Identity drift visualization tools  
+- Diffusion-step identity curve analysis  
 
 ---
 
 # 🚀 Research Roadmap
+
 ![Roadmap](images/RoadMap.png)
 
 ---
