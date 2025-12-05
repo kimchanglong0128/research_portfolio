@@ -6,11 +6,8 @@ My research centers on building **faithful and self-improving generative models*
 I aim to bridge the gap between modern generative models’ impressive visual quality and their lack of **identity consistency**, **semantic faithfulness**, and **self-correction capabilities**.
 
 Research interests include:
-- score-based generative modeling  
-- multimodal alignment & consistency  
-- diffusion dynamics  
-- self-refining generative systems  
-- parameter-efficient adaptation (LoRA, adapters)  
+- Reliable Generative Models
+- Self-Improving Generative Systems
 
 
 ---
@@ -20,7 +17,7 @@ Research interests include:
 - **Inductive Biases in Generative Models**
 - **Identity-Stable Diffusion Dynamics (Part I)**
 - **Closed-Loop Multimodal Alignment (Part II)**
-- **Parameter-Efficient Personalization (LoRA, Adapters)**
+- **Parameter-Efficient Personalization**
 - **Semantic Consistency & Self-Correcting Generative Systems**
 
 
