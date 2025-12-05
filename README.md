@@ -5,10 +5,10 @@ My research centers on building **faithful and self-improving generative models*
 
 I aim to bridge the gap between modern generative models’ impressive visual quality and their lack of **identity consistency**, **semantic faithfulness**, and **self-correction capabilities**.
 
-My interests include:
+Research interests include:
 - score-based generative modeling  
 - multimodal alignment & consistency  
-- dynamics of diffusion models  
+- diffusion dynamics  
 - self-refining generative systems  
 - parameter-efficient adaptation (LoRA, adapters)  
 
@@ -31,57 +31,146 @@ My interests include:
 # 🔬 Unified Research Agenda  
 ## **Toward Faithful & Self-Improving Generative Models**
 
-My research agenda consists of **two complementary components** that together aim to enhance the reliability, controllability, and semantic stability of diffusion-based generative systems.
+This agenda contains **two complementary research directions** that together aim to enhance the consistency, controllability, and semantic reliability of diffusion-based generative models.
 
 ---
 
-## 🔷 **Part I — Identity-Preserving Diffusion Dynamics**
+# 🔷 Part I — Identity-Preserving Diffusion Dynamics
 
-Generative models often fail to maintain identity fidelity in one-shot personalization.  
-To address this, I study how identity-related information propagates through **diffusion SDE/ODE fields** and design mechanisms that stabilize identity across the generative trajectory.
+One-shot personalization frequently suffers from *identity drift*, where the generated subject gradually deviates from the reference.  
+This issue persists across architectures—including U-Net, SDXL, and DiT—suggesting that identity loss originates from **diffusion dynamics**, not model capacity.
 
-I focus on:
-- analyzing identity evolution through intermediate diffusion states  
-- understanding how low-rank adaptation reshapes identity-sensitive directions  
-- designing identity-corrective vector fields and identity-stable probability-flow ODEs  
-
-**Goal:** Build diffusion models with intrinsic inductive biases that preserve identity under minimal-sample personalization.
+My research investigates *how identity information propagates through the diffusion SDE/ODE process* and how to stabilize it.
 
 ---
 
-## 🔶 **Part II — Closed-Loop Multimodal Alignment**
+## **1. Identity Flow Analysis Through Diffusion Timesteps**
 
-Text-to-image models frequently produce misaligned images lacking semantic fidelity.  
-I propose a **closed-loop T2I ↔ I2T refinement framework** where generative models use multimodal feedback to continuously improve alignment.
+I decode intermediate diffusion states (latents \(x_t\)) and compute identity embeddings using CLIP/DINO:
 
-Key ideas include:
-- CLIP- and caption-based multimodal alignment rewards  
-- iterative self-correction through gradient-based refinement  
-- representation-consistent training across T2I and I2T pathways  
-- lightweight continuous updates using adapters or LoRA  
+- visualize identity similarity curves across timesteps  
+- identify critical intervals where identity degradation emerges  
+- compare DDPM / DDIM / Flow-Matching behaviors  
+- analyze how noise schedule and timestep parameterization affect identity sensitivity  
 
-**Goal:** Enable generative models to self-evaluate, self-correct, and maintain robust semantic alignment—even for long-tail or compositional prompts.
+This produces the first systematic **identity evolution profile** for diffusion models.
+
+---
+
+## **2. Effects of Low-Rank Personalization on Identity Stability**
+
+Low-rank adaptation (LoRA) modifies the score function:
+
+- Which layers help identity retention?  
+- Which layers induce drift?  
+- Does rank or scale correlate with stability?  
+- Do LoRA update directions align with identity-preserving subspaces?  
+
+Using gradient projections and embedding-space perturbation analysis, I study the **structure–identity relationship** inside diffusion models.
+
+---
+
+## **3. Designing Identity-Stable Diffusion Dynamics**
+
+The goal is to build diffusion mechanisms that *naturally* preserve identity:
+
+- identity-corrective vector fields added to the probability-flow ODE  
+- projection onto identity-consistent subspaces of the score field  
+- sampling-time regularization to stabilize sensitive regions  
+- architecture-agnostic controls applicable to U-Net, SDXL, DiT  
+
+**Goal:**  
+A theoretically grounded framework for *identity-stable personalization*, even in one-shot settings.
+
+---
+
+# 🔶 Part II — Closed-Loop Multimodal Alignment
+
+Despite high generative quality, diffusion models often fail to maintain strong semantic fidelity.  
+They lack mechanisms to **evaluate, diagnose, and refine** their own outputs.
+
+I aim to build a closed-loop T2I ↔ I2T refinement system where models learn to self-correct using multimodal feedback.
+
+---
+
+## **1. Multimodal Feedback Modeling**
+
+I design a unified reward integrating three semantic signals:
+
+- **CLIP similarity** (global alignment)  
+- **caption-based similarity** (fine-grained semantics)  
+- **perceptual consistency** (image-level stability)  
+
+\[
+R(x, y) = 
+\alpha \cdot \mathrm{CLIP}(x,y)
++ \beta \cdot \cos(E(\hat{y}), E(y))
++ \gamma \cdot \mathrm{Perceptual}(x)
+\]
+
+This creates a richer supervisory signal than CLIP alone.
+
+---
+
+## **2. Closed-Loop Generation and Refinement**
+
+Instead of full RL-based training (high cost), I explore lightweight iterative refinement:
+
+\[
+x_{t+1} = x_t + \eta \nabla_x R(x_t, y)
+\]
+
+This mechanism enables:
+
+- correction of local attribute mismatches  
+- reinforcement of global semantics  
+- prevention of drift during long or compositional prompts  
+
+It forms a **self-improving loop** without expensive retraining.
+
+---
+
+## **3. Representation-Consistent Alignment**
+
+I enforce coherence across T2I and I2T embedding spaces:
+
+\[
+\mathcal{L}_{repr} =
+\|E_{\mathrm{img}}(x) - E_{\mathrm{text}}(y)\|
++ \lambda \|E(\hat{y}) - E(y)\|.
+\]
+
+This improves:
+
+- compositional reasoning  
+- long-tail robustness  
+- fine-grained attribute consistency  
+- cross-modal semantic grounding  
+
+**Goal:**  
+A T2I model that understands—and corrects—its own mistakes.
 
 ---
 
 # 🧭 Preliminary Work
 
 ### 📚 Theoretical Preparation
-Extensive study and synthesis of:
-- Generative and diffusion model theory  
-- Multimodal alignment & representation learning  
-- Parameter-efficient fine-tuning  
-- Score-based model interpretation  
+Extensive study on:
+- generative & diffusion model theory  
+- multimodal alignment and representation learning  
+- parameter-efficient tuning  
+- diffusion trajectory interpretation  
 
-(Research notes maintained in personal logs.)
+(Notes maintained in private logs.)
 
 ---
 
 ### 🧪 Experiments & Prototyping
-- LoRA-based diffusion personalization experiments  
-- Cycle-consistency analysis across T2I ↔ I2T  
-- Multimodal fusion prototypes (vision × text encoders)  
-- Diffusion trajectory visualization and identity drift measurement  
+- LoRA-based personalization experiments  
+- multimodal fusion prototypes  
+- closed-loop caption feedback tests  
+- identity drift visualization tools  
+- diffusion-step identity curve analysis  
 
 ---
 
