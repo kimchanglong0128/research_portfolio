@@ -1,204 +1,96 @@
-# **Unified Research Proposal  
-Toward Faithful & Self-Improving Generative Models**
+# 🏫 CHANGLONG JIN — Integrated Master–Ph.D. Student, Yonsei University AI
 
-## 📌 Overview
+Hi, I'm **CHANGLONG JIN**, an Integrated Master–Ph.D. student in Artificial Intelligence at **Yonsei University**.  
+My research centers on building **faithful and self-improving generative models** by designing stronger inductive biases, stabilizing diffusion dynamics, and leveraging multimodal feedback for continuous refinement.
 
-Modern generative models achieve impressive visual quality but still lack fundamental capabilities of **identity preservation**, **semantic consistency**, and **self-correction**.  
-This unified research plan aims to develop generative systems with **stronger inductive biases**, enabling:
+I aim to bridge the gap between modern generative models’ impressive visual quality and their lack of **identity consistency**, **semantic faithfulness**, and **self-correction capabilities**.
 
-- identity-stable generation  
-- robust text–image alignment  
-- feedback-driven self-improvement  
+My interests include:
+- score-based generative modeling  
+- multimodal alignment & consistency  
+- dynamics of diffusion models  
+- self-refining generative systems  
+- parameter-efficient adaptation (LoRA, adapters)  
 
-This agenda consists of two complementary research paths:
-
-1. **Identity-Preserving Diffusion Dynamics**  
-2. **Closed-Loop Multimodal Alignment**
-
-Together, they form a coherent framework toward **faithful, reliable, and self-improving generative models.**
 
 ---
 
-# 1. Background
+# 🎯 Research Focus
 
-Diffusion models have transformed generative AI, enabling high-fidelity image synthesis and rapid adaptation.  
-However, two persistent limitations remain:
+- **Inductive Biases in Generative Models**  
+- **Identity-Stable Diffusion SDE/ODE Dynamics**  
+- **Closed-Loop Text–Image ↔ Image–Text Multimodal Alignment**  
+- **Parameter-Efficient Personalization & Adaptation**  
+- **Self-Correction and Feedback-Driven Refinement**  
+- **Multimodal Fusion (Image × Text)**  
+- **Improving Semantic Faithfulness in T2I Models**  
 
-### **1) Identity drift**  
-Generated subjects deviate from the reference identity in personalization tasks.
-
-### **2) Semantic misalignment**  
-Generated images fail to accurately reflect textual descriptions.
-
-These problems are not fully solved by scaling or new architectures (e.g., DiT).  
-They reflect deeper limitations in:
-
-- **diffusion dynamics** (identity signal propagation)  
-- **multimodal alignment mechanisms** (text–image consistency)  
-
-This unified agenda aims to address these foundational issues.
 
 ---
 
-# 2. Related Work
+# 🔬 Unified Research Agenda  
+## **Toward Faithful & Self-Improving Generative Models**
 
-### Identity Consistency  
-Textual inversion, DreamBooth, and LoRA enable personalization but do not explain or prevent identity drift.  
-Theoretical works analyze diffusion sampling but rarely examine how identity information evolves through SDE/ODE fields.
-
-### Text–Image Alignment  
-CLIP-guided optimization and improved conditioning help alignment but lack self-correction.  
-Caption models provide semantic signals but are not integrated into iterative refinement loops.
-
-### Gap  
-Existing methods address identity and alignment separately.  
-No framework unifies:
-
-- **identity stability**  
-- **semantic consistency**  
-- **closed-loop self-improvement**
-
-This proposal fills that gap.
+My research agenda consists of **two complementary components** that together aim to enhance the reliability, controllability, and semantic stability of diffusion-based generative systems.
 
 ---
 
-# 3. Motivation & Research Vision
+## 🔷 **Part I — Identity-Preserving Diffusion Dynamics**
 
-My research vision is to develop **faithful and self-improving generative models**.
+Generative models often fail to maintain identity fidelity in one-shot personalization.  
+To address this, I study how identity-related information propagates through **diffusion SDE/ODE fields** and design mechanisms that stabilize identity across the generative trajectory.
 
-Current diffusion models:
+I focus on:
+- analyzing identity evolution through intermediate diffusion states  
+- understanding how low-rank adaptation reshapes identity-sensitive directions  
+- designing identity-corrective vector fields and identity-stable probability-flow ODEs  
 
-- lack inductive biases that stabilize identity  
-- cannot evaluate or refine their own outputs  
-- struggle with long-tail and compositional prompts  
-
-To address these issues, I propose a two-part research agenda:
-
----
-
-# 🔷 **Part I — Identity-Preserving Diffusion Dynamics**  
-Understanding and controlling how identity information propagates through diffusion SDE/ODE trajectories.
-
-# 🔶 **Part II — Closed-Loop Multimodal Alignment**  
-Enabling models to self-evaluate and refine outputs using multimodal semantic feedback.
-
-Together, these directions aim to build **more reliable and controllable generative systems**.
+**Goal:** Build diffusion models with intrinsic inductive biases that preserve identity under minimal-sample personalization.
 
 ---
 
-# 4. Part I — Identity-Preserving Diffusion Dynamics
+## 🔶 **Part II — Closed-Loop Multimodal Alignment**
 
-## 🔹 Goal  
-Develop a dynamics-level understanding of identity flow and design identity-stable diffusion mechanisms.
+Text-to-image models frequently produce misaligned images lacking semantic fidelity.  
+I propose a **closed-loop T2I ↔ I2T refinement framework** where generative models use multimodal feedback to continuously improve alignment.
 
-## 🔹 Thrust 1 — Quantifying Identity Evolution  
-Decode intermediate latents \(x_t\) → obtain identity embedding \(z_t\) via CLIP/DINO → measure similarity:
+Key ideas include:
+- CLIP- and caption-based multimodal alignment rewards  
+- iterative self-correction through gradient-based refinement  
+- representation-consistent training across T2I and I2T pathways  
+- lightweight continuous updates using adapters or LoRA  
 
-\[
-s_t = \cos(z_t, z_{\text{ref}})
-\]
-
-Analyze when drift emerges and which sampling steps cause degradation.
-
----
-
-## 🔹 Thrust 2 — Effects of Low-Rank Personalization  
-LoRA modifies model weights:
-
-\[
-W' = W + AB^\top
-\]
-
-Study how such low-rank updates alter identity-sensitive directions within the score field.
+**Goal:** Enable generative models to self-evaluate, self-correct, and maintain robust semantic alignment—even for long-tail or compositional prompts.
 
 ---
 
-## 🔹 Thrust 3 — Identity-Stable Diffusion Dynamics  
-Modify probability-flow ODE:
+# 🧭 Preliminary Work
 
-\[
-\frac{dx_t}{dt} = f_\theta(x_t, t) + u(x_t, t)
-\]
+### 📚 Theoretical Preparation
+Extensive study and synthesis of:
+- Generative and diffusion model theory  
+- Multimodal alignment & representation learning  
+- Parameter-efficient fine-tuning  
+- Score-based model interpretation  
 
-Design corrective fields \(u\) that counteract drift.  
-Goal: **architecture-agnostic identity stability** (U-Net, SDXL, DiT).
-
----
-
-# 5. Part II — Closed-Loop Multimodal Alignment
-
-## 🔹 Goal  
-Build a self-correcting generation framework through T2I ↔ I2T feedback.
+(Research notes maintained in personal logs.)
 
 ---
 
-## 🔹 Thrust 1 — Multimodal Feedback Modeling  
-Define reward combining CLIP and caption feedback:
-
-\[
-R(x, y)
-= \alpha \cdot \mathrm{CLIP}(x,y)
-+ \beta \cdot \cos(E(\hat{y}), E(y))
-\]
+### 🧪 Experiments & Prototyping
+- LoRA-based diffusion personalization experiments  
+- Cycle-consistency analysis across T2I ↔ I2T  
+- Multimodal fusion prototypes (vision × text encoders)  
+- Diffusion trajectory visualization and identity drift measurement  
 
 ---
 
-## 🔹 Thrust 2 — Closed-Loop Refinement  
-Iteratively refine generated images:
-
-\[
-x_{t+1} = G_\theta(y, \nabla_x R(x_t, y))
-\]
-
-Or fine-tune generator parameters via:
-
-\[
-\theta \leftarrow \theta + \eta \nabla_\theta R
-\]
-
-RL is optional, not required.
+# 🚀 Research Roadmap
+![Roadmap](images/RoadMap.png)
 
 ---
 
-## 🔹 Thrust 3 — Representation-Consistent Alignment  
-Align T2I and I2T embeddings:
+# 📫 Contact
 
-\[
-\mathcal{L}_{repr} =
-\|E_{\text{img}}(x) - E_{\text{text}}(y)\|
-+ \gamma \| E(\hat{y}) - E(y) \|
-\]
-
-Combined objective:
-
-\[
-\mathcal{L} = -R + \lambda \mathcal{L}_{repr}
-\]
-
----
-
-# 6. Integrated Research Roadmap
-
-### **Short-term**
-- Identity drift measurement tools  
-- Closed-loop refinement prototype  
-
-### **Mid-term**
-- Identity-stable vector fields  
-- Multimodal reward integration  
-- Representation-consistent training  
-
-### **Long-term**
-A unified generative model that is:
-
-- identity-stable  
-- semantically aligned  
-- self-improving  
-
----
-
-# 7. Broader Impact
-
-This research enhances the reliability and controllability of generative models, enabling safer and more consistent text–image synthesis.  
-It also deepens the theoretical understanding of identity propagation, multimodal alignment, and feedback-driven refinement—informing future model architectures and training paradigms.
-
+- Email: **kimcl1221@yonsei.ac.kr**  
+- GitHub: **https://github.com/kimchanglong0128**
