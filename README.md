@@ -159,7 +159,7 @@ I conducted in-depth reviews and theoretical studies on:
 
 - [Generative & Diffusion Models](https://www.notion.so/Generative-Diffusion-Model-2a4d80fa6bde801fa55bf3e4cdde2e05)  
 - [Multimodal Alignment, Representation Learning & Recommendation Systems](https://www.notion.so/1ccd80fa6bde804fbf91cf15ec433298?v=1ccd80fa6bde80b18a97000c46532dd4)  
-- Parameter-efficient adaptation methods (LoRA, adapters)  
+- Parameter-efficient Fine-Tuning, Selective Adaptive Tuning
 
 (Additional research notes are documented in personal logs.)
 
