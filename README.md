@@ -17,13 +17,12 @@ Research interests include:
 
 # 🎯 Research Focus
 
-- **Inductive Biases in Generative Models**  
-- **Identity-Stable Diffusion SDE/ODE Dynamics**  
-- **Closed-Loop Text–Image ↔ Image–Text Multimodal Alignment**  
-- **Parameter-Efficient Personalization & Adaptation**  
-- **Self-Correction and Feedback-Driven Refinement**  
-- **Multimodal Fusion (Image × Text)**  
-- **Improving Semantic Faithfulness in T2I Models**  
+- **Inductive Biases in Generative Models**
+- **Identity-Stable Diffusion Dynamics (Part I)**
+- **Closed-Loop Multimodal Alignment (Part II)**
+- **Parameter-Efficient Personalization (LoRA, Adapters)**
+- **Semantic Consistency & Self-Correcting Generative Systems**
+
 
 
 ---
