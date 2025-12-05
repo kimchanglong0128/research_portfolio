@@ -1,73 +1,86 @@
-# 🏫 CHANGLONG JIN, Integrated Master–Ph.D.
+# 🏫 CHANGLONG JIN — Integrated Master–Ph.D. Student, Yonsei University AI
 
-Hi, I'm **CHANGLONG JIN**, Integrated Master–Ph.D. program at **Yonsei University AI Dept.**  
-I aim to develop generative models with stronger inductive biases—models that can understand human language and continuously self-improve.
+Hi, I'm **CHANGLONG JIN**, currently pursuing an Integrated Master–Ph.D. in Artificial Intelligence at **Yonsei University**.  
+My research aims to develop **generative models with stronger inductive biases**, enabling them to maintain semantic consistency, preserve identity, and continuously self-improve through multimodal feedback.
 
-Currently researching:
-- diffusion-based identity consistency  
-- multimodal alignment  
-- parameter-efficient adaptation  
+I am particularly interested in:
+- score-based generative modeling  
+- multimodal alignment and consistency  
+- self-refining generative systems  
+- parameter-efficient adaptation (LoRA, Adapters)  
+
 
 ---
 
 # 🎯 Research Focus
 
-- **Inductive Biases in Generative Models**
-- **Identity-Stable Diffusion SDE/ODE Dynamics**
-- **Closed-Loop T2I ↔ I2T Multimodal Alignment**
-- **Parameter-Efficient Adaptation**
-- **Continuous Learning for Generative Models**
-- **Multimodal Fusion (Image × Text)**
-- **Enhance the model’s text understanding capability**
+- **Inductive Biases in Generative Models**  
+- **Identity-Stable Diffusion SDE/ODE Dynamics**  
+- **Closed-Loop Text–Image ↔ Image–Text Multimodal Alignment**  
+- **Parameter-Efficient Personalization & Adaptation**  
+- **Self-Correction in Generative Systems**  
+- **Multimodal Fusion (Image × Text)**  
+- **Improving Semantic Faithfulness in T2I Models**  
+
 
 ---
 
-# 🔬 Current Research Direction
+# 🔬 Current Research Directions
 
-## **Proposal 1 — Identity-Preserving Diffusion Dynamics**
-Identity features often drift in one-shot personalization.  
-I study how identity information propagates through **diffusion SDE/ODE fields**, and design:
+## 🧩 Proposal 1 — Identity-Preserving Diffusion Dynamics
+One-shot personalization often suffers from identity drift in diffusion models.  
+I investigate **how identity information propagates through diffusion SDE/ODE fields**, and develop:
 
-- low-rank/adaptive structure as identity-preserving inductive biases  
-- identity-stable probability-flow ODE  
-- dynamics-based controls for identity consistency under minimal samples  
+- low-rank and structure-aware inductive biases for identity preservation  
+- identity-stable probability-flow ODE formulations  
+- dynamics-level controls for stabilizing identity across timesteps  
 
-**Goal:** A theoretically grounded, identity-stable personalization mechanism.
+**Goal:** A theoretically grounded, identity-stable personalization framework under minimal samples.
+
 
 ---
 
-## **Proposal 2 — Closed-Loop Multimodal Alignment**
-Current T2I models lack self-correction.  
-I propose a **T2I ↔ I2T cycle** with:
+## 🔁 Proposal 2 — Closed-Loop Multimodal Alignment
+Current text-to-image models lack mechanisms for **self-evaluation and self-correction**.  
+I propose a **closed-loop T2I ↔ I2T alignment framework** using:
 
-- CLIP-based alignment rewards  
-- cycle consistency to reduce semantic drift  
-- replay + adapter-based continuous refinement  
+- CLIP- and caption-based multimodal rewards  
+- iterative cycle consistency to reduce semantic drift  
+- lightweight adapter-based continuous refinement  
 
-**Goal:** A self-improving multimodal generative system.
+**Goal:** A self-improving multimodal generative system with robust alignment, especially for long-tail or compositional prompts.
+
 
 ---
 
 # 🧭 Preliminary Work
 
-## **📚 Research Preparation**
-I performed comprehensive review and theoretical study of prior work related to [Generative & Diffusion Model](https://www.notion.so/Generative-Diffusion-Model-2a4d80fa6bde801fa55bf3e4cdde2e05), [Multimodal Alignment, Representation Learning & Recommendation System](https://www.notion.so/1ccd80fa6bde804fbf91cf15ec433298?v=1ccd80fa6bde80b18a97000c46532dd4).
+## 📚 Research Preparation
+I conducted in-depth reviews and theoretical studies on:
+- Generative & Diffusion Models  
+- Multimodal Alignment and Representation Learning  
+- Parameter-efficient Adaptation Methods  
+
+(Research notes documented in personal logs.)
 
 ---
 
-## **🧪 Research Projects & Experiments**
+## 🧪 Research Projects & Experiments
+- LoRA-based diffusion personalization  
+- Cycle-consistency experiments  
+- Multimodal fusion (vision × text)  
+- Score-based model behavior analysis  
 
-- 🧩 LoRA-based diffusion adaptation  
-- 🔁 Cycle-consistency experiments  
-- 🔀 Multimodal fusion  
 
 ---
 
-## **Research Roadmap**
+# 🚀 Research Roadmap
 ![Roadmap](images/RoadMap.png)
+
 
 ---
 
 # 📫 Contact
-- Email: kimcl1221@yonsei.ac.kr  
-- GitHub: github.com/kimchanglong0128
+
+- Email: **kimcl1221@yonsei.ac.kr**  
+- GitHub: **https://github.com/kimchanglong0128**
