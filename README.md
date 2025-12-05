@@ -1,4 +1,4 @@
-# 🏫 CHANGLONG JIN — Integrated Master–Ph.D. Student, Yonsei University AI
+# 🏫 CHANGLONG JIN — AI Integrated Master–Ph.D. 
 
 Hi, I'm **CHANGLONG JIN**, an Integrated Master–Ph.D. student in Artificial Intelligence at **Yonsei University**.  
 My research centers on building **faithful and self-improving generative models** by designing stronger inductive biases, stabilizing diffusion dynamics, and leveraging multimodal feedback for continuous refinement.
