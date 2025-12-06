@@ -41,53 +41,98 @@ I focus on two complementary directions:
 Together, these projects aim to establish a unified framework for generative models that maintain identity, preserve semantic consistency, and continually improve through multimodal signals.
 
 ---
+# 🔵 Part I — Dynamic Control of Drift-Prone Directions in Personalized Diffusion Models
 
-\section*{Part I — Dynamic Control of Drift-Prone Directions in Personalized Diffusion Models}
 
-One-shot personalization often causes \emph{identity drift}, where generated outputs gradually
-deviate from the target subject. This issue persists across architectures (U-Net, SDXL, DiT)
-and tuning methods (LoRA, DreamBooth, adapters), indicating that the root cause lies not in
-data scarcity but in instability within the \textbf{score dynamics} and \textbf{inductive biases}
-of the diffusion process.
+One-shot personalization often leads to **identity drift**, where generated outputs gradually deviate from the target subject.
+This issue appears across architectures (U-Net, SDXL, DiT) and tuning methods (LoRA, DreamBooth, Adapters), suggesting that the root cause lies not in data scarcity but in the **instability of diffusion score dynamics and inductive biases**.
 
-% -----------------------------------
-\subsection*{1. Personalization as a Perturbation to the Score Field}
-\[
-s_{\theta'}(x_t, t)
-= s_\theta(x_t, t) + \Delta s(x_t, t),
-\]
+---
 
-Identity features occupy low-energy, fragile subspaces, making them highly sensitive to
-perturbations introduced by LoRA or other PEFT methods.
+## 1. Personalization as Score-Field Perturbation
 
-% -----------------------------------
-\subsection*{2. Drift-Prone Directions and Dynamic Instability}
+Diffusion models rely on a pretrained score function:
 
-Identity drift emerges when perturbations align with unstable directions:
-\[
-\frac{d}{dt}\delta x_t
-= J_{s_{\theta'}}(x_t)\,\delta x_t,
-\]
+```
+s_θ(x_t, t)
+```
 
-% -----------------------------------
-\subsection*{3. Dynamic Control During Sampling}
+Personalization modifies it into:
 
-\[
-\frac{dx_t}{dt}
-= s_{\theta'}(x_t, t) + u(x_t,t),
-\]
+```
+s_θ'(x_t, t) = s_θ(x_t, t) + Δs(x_t, t)
+```
 
-\[
-u(x_t, t) = -\alpha(t)\, P_{\text{drift}}\, s_{\theta'}(x_t, t),
-\]
+where `Δs` represents the inductive bias introduced by LoRA or other parameter-efficient tuning methods.
 
-This controller suppresses drift-prone components and preserves identity.
+```
+s_θ(x_t, t)
+```
 
-% -----------------------------------
-\subsection*{Goal}
+```
+s_θ'(x_t, t) = s_θ(x_t, t) + Δs(x_t, t)
+```
+Identity features occupy **low-energy, fragile subspaces**, making them highly sensitive to perturbations.
 
-To build a dynamics-aware, theoretically grounded framework that controls drift-prone
-directions and enables stable, reliable one-shot personalization.
+---
+
+## 2. Drift-Prone Directions and Dynamic Instability
+
+Identity drift emerges when personalization perturbations align with unstable directions of the reverse diffusion dynamics:
+
+```
+d/dt (δx_t) = J_sθ'(x_t) · δx_t
+```
+
+where `J_sθ'` is the Jacobian of the personalized score function.
+
+```
+d/dt (δx_t) = J_sθ'(x_t) · δx_t
+```
+
+
+Positive eigenvalues correspond to **drift-prone directions**, where deviations grow over time.
+Different diffusion timesteps specialize in structure → texture → identity, so identity instability emerges in specific sampling intervals.
+
+
+---
+
+## 3. Dynamic Control During Sampling
+
+To counteract drift, a control term is added during sampling:
+
+```
+dx_t/dt = s_θ'(x_t, t) + u(x_t, t)
+```
+
+```
+dx_t/dt = s_θ'(x_t, t) + u(x_t, t)
+```
+
+A stabilizing controller suppresses drift-prone score components:
+
+```
+u(x_t, t) = -α(t) · P_drift · s_θ'(x_t, t)
+```
+
+where `P_drift` projects onto unstable eigen-directions.
+
+```
+u(x_t, t) = -α(t) · P_drift · s_θ'(x_t, t)
+```
+
+
+This results in **identity-stable personalization**, independent of architecture or fine-tuning strategy.
+
+
+---
+
+## 🎯 Goal
+
+**To build a dynamics-aware, theoretically grounded framework that identifies and controls drift-prone directions, enabling stable and reliable one-shot personalization.**
+
+
+
 ---
 
 # 🔶 Part II — Closed-Loop Multimodal Alignment
