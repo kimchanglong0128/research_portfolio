@@ -3,10 +3,13 @@
 I am an Integrated Master–Ph.D. student in Artificial Intelligence at Yonsei University.  
 My research focuses on making generative models **more stable, faithful, and self-correcting**, with a particular emphasis on diffusion models and multimodal alignment.
 
-I am especially interested in:
-- **Dynamics-aware diffusion models**
-- **Closed-loop multimodal alignment**
-- **Reliable, parameter-efficient personalization**
+Interested in:
+- **Dynamics-aware Diffusion Models**
+- **Closed-loop Multimodal Alignment**
+- **PEFT & AST**
+- **Inductive Bias**
+
+Overall, my goal is to design generative systems that not only produce high-quality images, but also **know when they are wrong and learn how to fix themselves.**
 
 
 ---
