@@ -17,11 +17,11 @@ Overall, my goal is to design generative systems that not only produce high-qual
 # 🎯 Research Focus
 
 
-- **Understanding and shaping inductive biases** that gshape identity and semantic representations and influence their stability during diffusion. [part I]
+- **Understanding and shaping inductive biases** that gshape identity and semantic representations and influence their stability during diffusion. [**part I**]
 
-- **Modeling personalization as a perturbation to diffusion dynamics**, identifying unstable or drift-prone directions, and designing mechanisms for identity-stable sampling. [part I]
+- **Modeling personalization as a perturbation to diffusion dynamics**, identifying unstable or drift-prone directions, and designing mechanisms for identity-stable sampling. [**part I**]
 
-- **Building closed-loop multimodal alignment systems** where text–image models use semantic feedback to evaluate and refine their own outputs. [part II]
+- **Building closed-loop multimodal alignment systems** where text–image models use semantic feedback to evaluate and refine their own outputs. [**part II**]
 
 
 
