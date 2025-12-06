@@ -45,7 +45,7 @@ Together, these projects aim to establish a unified framework for generative mod
 
 
 One-shot personalization often leads to **identity drift**, where generated outputs gradually deviate from the target subject.
-This issue appears across architectures (U-Net, SDXL, DiT) and tuning methods (LoRA, DreamBooth, Adapters), suggesting that the root cause lies not in data scarcity but in the **instability of diffusion score dynamics and inductive biases**.
+This issue appears across architectures and tuning methods, suggesting that the root cause lies not in data scarcity but in the **instability of diffusion score dynamics and inductive biases**.
 
 ---
 
