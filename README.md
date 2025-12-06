@@ -18,9 +18,7 @@ Overall, my goal is to design generative systems that not only produce high-qual
 
 
 - **Understanding and shaping inductive biases** that gshape identity and semantic representations and influence their stability during diffusion. [**part I**]
-
 - **Modeling personalization as a perturbation to diffusion dynamics**, identifying unstable or drift-prone directions, and designing mechanisms for identity-stable sampling. [**part I**]
-
 - **Building closed-loop multimodal alignment systems** where text–image models use semantic feedback to evaluate and refine their own outputs. [**part II**]
 
 
@@ -29,9 +27,18 @@ Overall, my goal is to design generative systems that not only produce high-qual
 ---
 
 # 🔬 Unified Research Agenda  
-## **Toward Faithful & Self-Improving Generative Models**
+## Designing Reliable, Dynamics-Aware, and Self-Correcting Generative Models
 
-This agenda contains **two complementary research directions** that together aim to enhance the consistency, controllability, and semantic reliability of diffusion-based generative models.
+My research explores how **inductive biases**, **diffusion dynamics**, and **multimodal feedback** shape the reliability of modern generative models.  
+I focus on two complementary directions:
+
+1. **Dynamic Control of Drift-Prone Directions in Personalized Diffusion Models**  
+   Modeling personalization as a perturbation to the pretrained score field, identifying drift-prone directions, and developing dynamic control mechanisms to preserve identity stability.
+
+2. **Closed-Loop Multimodal Alignment for Text–Image Generation**  
+   Enabling text–image generative models to evaluate and refine their outputs using CLIP and caption-based semantic feedback, leading to self-correcting generation pipelines.
+
+Together, these projects aim to establish a unified framework for generative models that maintain identity, preserve semantic consistency, and continually improve through multimodal signals.
 
 ---
 
