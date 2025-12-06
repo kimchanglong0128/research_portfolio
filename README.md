@@ -42,55 +42,52 @@ Together, these projects aim to establish a unified framework for generative mod
 
 ---
 
-# 🔷 Part I — Identity-Preserving Diffusion Dynamics
+\section*{Part I — Dynamic Control of Drift-Prone Directions in Personalized Diffusion Models}
 
-One-shot personalization frequently suffers from *identity drift*, where the generated subject gradually deviates from the reference.  
-This issue persists across architectures—including U-Net, SDXL, and DiT—suggesting that identity loss originates from **diffusion dynamics**, not model capacity.
+One-shot personalization often causes \emph{identity drift}, where generated outputs gradually
+deviate from the target subject. This issue persists across architectures (U-Net, SDXL, DiT)
+and tuning methods (LoRA, DreamBooth, adapters), indicating that the root cause lies not in
+data scarcity but in instability within the \textbf{score dynamics} and \textbf{inductive biases}
+of the diffusion process.
 
-My research investigates how identity information propagates through the diffusion SDE/ODE process and how to stabilize it.
+% -----------------------------------
+\subsection*{1. Personalization as a Perturbation to the Score Field}
+\[
+s_{\theta'}(x_t, t)
+= s_\theta(x_t, t) + \Delta s(x_t, t),
+\]
 
----
+Identity features occupy low-energy, fragile subspaces, making them highly sensitive to
+perturbations introduced by LoRA or other PEFT methods.
 
-## 1. Identity Flow Analysis Through Diffusion Timesteps
+% -----------------------------------
+\subsection*{2. Drift-Prone Directions and Dynamic Instability}
 
-I decode intermediate diffusion states (latents `x_t`) and compute identity embeddings using CLIP/DINO, then track an identity similarity curve, e.g.:
+Identity drift emerges when perturbations align with unstable directions:
+\[
+\frac{d}{dt}\delta x_t
+= J_{s_{\theta'}}(x_t)\,\delta x_t,
+\]
 
-- `s_t = cos(z_t, z_ref)` where `z_t` is the embedding at timestep `t`  
-- visualize how similarity changes across timesteps  
-- identify critical intervals where identity degradation emerges  
-- compare DDPM / DDIM / flow-matching style samplers  
-- analyze how noise schedule and timestep parameterization affect identity sensitivity  
+% -----------------------------------
+\subsection*{3. Dynamic Control During Sampling}
 
-This produces a systematic **identity evolution profile** for diffusion models.
+\[
+\frac{dx_t}{dt}
+= s_{\theta'}(x_t, t) + u(x_t,t),
+\]
 
----
+\[
+u(x_t, t) = -\alpha(t)\, P_{\text{drift}}\, s_{\theta'}(x_t, t),
+\]
 
-## 2. Effects of Low-Rank Personalization on Identity Stability
+This controller suppresses drift-prone components and preserves identity.
 
-Low-rank adaptation (LoRA) modifies the score function and internal representations.  
-I study questions such as:
+% -----------------------------------
+\subsection*{Goal}
 
-- Which layers help identity retention, and which tend to induce drift?  
-- How do rank, scale, and insertion location affect identity stability?  
-- Do LoRA update directions align with identity-preserving or identity-destroying subspaces in the feature space?  
-
-Using gradient analysis and embedding-space perturbation, I aim to reveal the **structure–identity relationship** inside diffusion models.
-
----
-
-## 3. Designing Identity-Stable Diffusion Dynamics
-
-The goal is to build diffusion mechanisms that *naturally* preserve identity:
-
-- identity-corrective vector fields added to the probability-flow ODE  
-- projection onto identity-consistent subspaces of the score field  
-- sampling-time regularization to stabilize sensitive regions  
-- architecture-agnostic controls applicable to U-Net, SDXL, and DiT variants  
-
-**Goal:**  
-A theoretically grounded framework for *identity-stable personalization*, even in one-shot settings.
-
-
+To build a dynamics-aware, theoretically grounded framework that controls drift-prone
+directions and enables stable, reliable one-shot personalization.
 ---
 
 # 🔶 Part II — Closed-Loop Multimodal Alignment
